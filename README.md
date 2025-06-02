@@ -81,7 +81,7 @@ struct TodoState: Equatable, Identifiable {
 
 // Parent state with collection
 struct TodoListState: Equatable {
-    var todos: [TodoState] = []
+    var todos: IdentifiedArray<TodoState> = []
 }
 
 class TodoListFeature: Feature<TodoListState, TodoDependencies> {

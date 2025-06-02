@@ -101,6 +101,20 @@ public struct IdentifiedArray<Element: Identifiable> where Element.ID: Hashable 
     return element
   }
 
+  /// Removes elements by an index set
+  public mutating func remove(atOffsets offsets: IndexSet) {
+    // Remove elements at specified indices
+    for index in offsets.reversed() {
+      let removedElement = elements.remove(at: index)
+      idToIndex.removeValue(forKey: removedElement.id)
+    }
+
+    // Rebuild index map
+    for (index, element) in elements.enumerated() {
+      idToIndex[element.id] = index
+    }
+  }
+
   /// Removes all elements from the array.
   public mutating func removeAll() {
     elements.removeAll()
