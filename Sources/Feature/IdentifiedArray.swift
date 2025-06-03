@@ -51,7 +51,7 @@ public struct IdentifiedArray<Element: Identifiable> where Element.ID: Hashable 
         if let index = idToIndex[id] {
           elements[index] = newValue
         } else {
-          elements.append(newValue)
+          self.append(newValue)
         }
       } else {
         remove(id: id)
